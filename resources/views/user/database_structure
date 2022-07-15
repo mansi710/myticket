@@ -1,0 +1,119 @@
+
+Admin Side:
+
+    Tickets module (List, view, Actions, Sorting, Searching, Paging)
+    Details page with list and add comments
+    Notifications module (List, Mark read)
+    Set reminder notification to admin for Tickets which are not resolved within 1 day. (Email and admin side notification)
+
+Front Side:
+
+    Raise ticket
+    Tickets listing with status
+    Tickets Details with comment section
+    Notification for tickets status
+
+Front Side
+
+- Ticket Raised
+
+    Tickets Table
+
+            -id int PK
+            -name varchar
+            -status enum[pending,approve,inprogress]
+            -created_at
+            -updated_at
+
+    Comments Table
+
+            - id int PK
+            - ticket_id FK references tickets_table
+            - user_id FK references users
+            - Comment_Description text
+            - created_at
+            - updated_at
+            
+    Notification Table
+    
+            - id int PK
+            - 
+
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    </head>
+    <body>
+  
+
+ 
+    
+    @if($message=Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{$message}}</p>
+        </div>
+    @endif
+
+
+    <div class="container mt-3">
+        <p class="mb-2"><< Details List</a></p>
+           <!-- show the detail of specific ticket -->
+           <div class="col-md-3">
+            <div class="form-group row col-md-12">
+               <label for="ticket_name" class="col-md-6 col-form-label text-md-right">Ticket Name</label>
+               <div class="col-md-6">
+                   <input id="ticket_name" type="text" class="form-control" name="ticket_name" value="{{$ticket->ticket_name}}" readonly/>
+               </div>
+           </div>
+           <div class="form-group row col-md-12">
+               <label for="status" class="col-md-6 col-form-label text-md-right">Ticket Status</label>
+               <div class="col-md-6">
+                   <input id="status" type="text" class="form-control" name="status" value="{{$ticket->status}}" readonly/>
+               </div>
+           </div>
+           <div class="form-group row col-md-12">
+               <label for="ticket_message" class="col-md-6 col-form-label text-md-right">Ticket Name</label>
+               <div class="form-outline col-md-6">
+                   <textarea class="form-control" name="ticket_message" id="textAreaExample1" rows="4" readonly>{{$ticket->ticket_message}}</textarea>
+   
+                </div>
+           </div>
+            </div>
+            <!-- end the detail of specific ticket -->
+        <hr/>
+        {{-- Post Comments --}}
+        <div class="card mt-4">
+            <h5 class="card-header">Comments <span class="comment-count float-right badge badge-info">{{ count($post->comments) }}</span></h5>
+            <div class="card-body">
+                {{-- Add Comment --}}
+                <div class="add-comment mb-3">
+                    @csrf
+                    <textarea class="form-control comment" placeholder="Enter Comment"></textarea>
+                    <button data-post="{{ $post->id }}" class="btn btn-dark btn-sm mt-2 save-comment">Submit</button>
+                </div>
+                <hr/>
+                {{-- List Start --}}
+                <div class="comments"> 
+                    @if(count($post->comments)>0)
+                        @foreach($post->comments as $comment)
+                            <blockquote class="blockquote">
+                              <small class="mb-0">{{ $comment->comment_text }}</small>
+                            </blockquote>
+                            <hr/>
+                        @endforeach
+                    @else
+                    <p class="no-comments">No Comments Yet</p>
+                    @endif
+                </div>
+            </div>
+        </div>
+        {{-- ## End Post Comments --}}
+    </div>
+    
+    </body>
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </body>
+</html>

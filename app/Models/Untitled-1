@@ -1,0 +1,92 @@
+
+	
+	
+vivek
+10:34 AM
+
+
+
+@all 
+Practical Exercise : 
+Ticket system: 40 Hours
+
+Tasks list:
+
+Authentication flow:
+
+    Admin and front login, registration with forgot password functionality
+    Admin and front profile
+    Front side change password functionality
+
+Admin Side:
+
+    Tickets module (List, view, Actions, Sorting, Searching, Paging)
+    Details page with list and add comments
+    Notifications module (List, Mark read)
+    Set reminder notification to admin for Tickets which are not resolved within 1 day. (Email and admin side notification)
+
+Front Side:
+
+    Raise ticket
+    Tickets listing with status
+    Tickets Details with comment section
+    Notification for tickets status
+
+Notes:
+
+    Manage proper access rights for both admin and front user.
+    Use config variable value if possible
+    Manage coding standard
+    Perform Re-usable code if possible
+    Set some heading on bunch of code like //code for get the user list etc.
+    Define proper database and relationships
+    Use email functionality where needed.
+
+    28/03/2022
+
+    Authentication flow:
+
+        Admin and front login, registration with forgot password functionality
+        Admin and front profile
+        Front side change password functionality
+
+    Front Side:
+
+        Raise ticket
+        Tickets listing with status
+
+    Admin Side:
+
+        Tickets module (List, view, Actions, Sorting, Searching, Paging)
+
+            Searching with only one field today
+            edit remaining.
+
+
+    29/03/2022
+
+        Admin side:
+
+                update complete
+                 Details page with list and add comments
+                
+        Front Side
+
+                 Tickets Details with comment section
+        
+        
+
+              // $ticket = Ticket::update([
+        //     'user_id' => Auth::user()->email,
+        //     'ticket_name' => $request->input('ticket_name'),
+        //     'priority'=>$request->input('priority'),
+        //     'ticket_message' => $request->input('ticket_message')
+
+        // ]);
+
+        // $ticket=Ticket::find($request->id);
+        // $ticket->user_id=$request->user_id;
+        // $ticket->ticket_name=$request->ticket_name;
+        // $ticket->status=$request->status;
+        // $ticket->priority=$request->priority;
+        // $ticket->ticket_message=$request->ticket_message;
